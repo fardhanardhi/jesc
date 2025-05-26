@@ -57,7 +57,7 @@ brews:
     homepage: https://github.com/fardhanardhi/jesc
     repository:
       owner: fardhanardhi
-      name: jesc
+      name: homebrew-jesc
     directory: Formula
     description: "DifA simple CLI tool to deeply unescape nested escaped JSON strings inside JSON objects."
     license: "MIT License"
