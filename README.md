@@ -1,6 +1,6 @@
 # jesc
 
-**jesc** (JSON Escape Cleaner) is a lightweight CLI tool that recursively unescapes deeply nested and escaped JSON strings within a JSON object. It's especially useful when you're dealing with messy JSON blobs where some fields are double, triple, or even more levels of string-encoded JSON.
+**jesc** is a lightweight CLI tool that recursively unescapes deeply nested and escaped JSON strings within a JSON object. It's especially useful when you're dealing with messy JSON blobs where some fields are double, triple, or even more levels of string-encoded JSON.
 
 ## ✨ Features
 
