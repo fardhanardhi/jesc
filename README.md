@@ -18,11 +18,9 @@
 brew install jesc
 ```
 
-### Windows
+### Windows & Linux
 
-```bash
-choco install jesc
-```
+See [releases page](https://github.com/fardhanardhi/jesc/releases).
 
 
 ## 🚀 Usage

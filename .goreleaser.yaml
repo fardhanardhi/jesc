@@ -51,3 +51,13 @@ release:
     ---
 
     Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
+
+brews:
+  - name: jesc
+    homepage: https://github.com/fardhanardhi/jesc
+    repository:
+      owner: fardhanardhi
+      name: jesc
+    directory: Formula
+    description: "DifA simple CLI tool to deeply unescape nested escaped JSON strings inside JSON objects."
+    license: "MIT License"
