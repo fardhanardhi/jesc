@@ -12,13 +12,14 @@
 
 ## 📦 Installation
 
-### macOS
+### MacOS & Linux
 
 ```bash
+brew tap fardhanardhi/jesc
 brew install jesc
 ```
 
-### Windows & Linux
+### Windows
 
 See [releases page](https://github.com/fardhanardhi/jesc/releases).
 
