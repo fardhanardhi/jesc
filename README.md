@@ -101,3 +101,7 @@ const debug = true
 ```
 
 This enables sample input and prints every nested key/value pair as it recursively parses the structure.
+
+📄 License
+
+The project is licensed under the [MIT License](https://github.com/fardhanardhi/jesc/blob/main/LICENSE).
