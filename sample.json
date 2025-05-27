@@ -1,0 +1,6 @@
+{
+    "name": "John Doe",
+    "age": 15,
+    "hobbies": "[{\"name\":\"climbing\",\"isFavorite\":true},{\"name\":\"cycling\",\"isFavorite\":true},{\"name\":\"running\",\"isFavorite\":true}]",
+    "esc": "{\"a\":3,\"b\":\"haha\",\"c\":\"{\\\"na\\\":3,\\\"nb\\\":\\\"haha\\\",\\\"nc\\\":\\\"{\\\\\\\"nna\\\\\\\":3,\\\\\\\"nnb\\\\\\\":\\\\\\\"haha\\\\\\\",\\\\\\\"nnc\\\\\\\":\\\\\\\"huhu\\\\\\\"}\\\"}\"}"
+}

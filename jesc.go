@@ -3,42 +3,44 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
+	"os"
 	"strings"
 	"time"
 
 	"github.com/spf13/pflag"
 )
 
-const debug = false
-
 func main() {
 	start := time.Now()
 
-	inputSample := `{
-		"name": "John Doe",
-		"age": 15,
-		"hobbies": "[{\"name\":\"climbing\",\"isFavorite\":true},{\"name\":\"cycling\",\"isFavorite\":true},{\"name\":\"running\",\"isFavorite\":true}]",
-		"esc": "{\"a\":3,\"b\":\"haha\",\"c\":\"{\\\"na\\\":3,\\\"nb\\\":\\\"haha\\\",\\\"nc\\\":\\\"{\\\\\\\"nna\\\\\\\":3,\\\\\\\"nnb\\\\\\\":\\\\\\\"haha\\\\\\\",\\\\\\\"nnc\\\\\\\":\\\\\\\"huhu\\\\\\\"}\\\"}\"}"
-	}`
-
 	format := pflag.BoolP("format", "f", false, "Format json with indentation")
+	filePath := pflag.String("file", "", "Input filepath")
 	pflag.Parse()
 	args := pflag.Args()
 
-	if !debug {
-		if len(args) == 0 {
-			fmt.Println("Must have an argument")
-			return
-		} else if len(args) > 1 {
-			fmt.Println("Only accept only single argument")
-			return
-		}
+	if *filePath != "" && len(args) > 0 {
+		fmt.Println("Either pass json directly as inline argument or specify the file path using --file")
+		fmt.Println("")
+		os.Exit(1)
 	}
 
 	var input string
-	if debug {
-		input = inputSample
+
+	if *filePath != "" {
+		// Open our jsonFile
+		jsonFile, err := os.Open(*filePath)
+		// if we os.Open returns an error then handle it
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Printf("\nSuccessfully Opened %s", *filePath)
+		// defer the closing of our jsonFile so that we can parse it later on
+		defer jsonFile.Close()
+		// read our opened xmlFile as a byte array.
+		byteValue, _ := io.ReadAll(jsonFile)
+		input = string(byteValue)
 	} else {
 		input = args[0]
 	}
@@ -63,6 +65,7 @@ func main() {
 	fmt.Println("")
 	fmt.Println("[INFO] JSON successfuly escaped ✨")
 	fmt.Printf("[INFO] Execution took %s\n", time.Since(start))
+	os.Exit(0)
 }
 
 func recusiveFormat(target map[string]any, nest ...string) map[string]any {
@@ -91,16 +94,8 @@ func recusiveFormat(target map[string]any, nest ...string) map[string]any {
 		}
 		v = va
 		m, ok := v.(map[string]any)
-		var t = strings.Repeat("    ", len(nest))
 		if ok {
-			if debug {
-				fmt.Printf("%s%s:\n", t, k)
-			}
 			v = recusiveFormat(m, append(nest, k)...)
-		} else {
-			if debug {
-				fmt.Printf("%s%s: %v\n", t, k, v)
-			}
 		}
 		target[k] = v
 	}
