@@ -26,17 +26,26 @@ See [releases page](https://github.com/fardhanardhi/jesc/releases).
 
 ## 🚀 Usage
 
+#### With direct json string
+
 ```bash
 jesc "<your-json-string>"
+```
+
+#### With input json file path
+
+```bash
+jesc --file "<your-json-filepath>"
 ```
 
 ### Optional flags
 
 - `-f`, `--format`: Format output JSON with indentation (pretty print)
+- `--output`: Output filepath
 
 ### Example
 
-Input (escaped JSON inside JSON string):
+#### Input (escaped JSON inside JSON string)
 
 ```json
 {
@@ -46,13 +55,27 @@ Input (escaped JSON inside JSON string):
 }
 ```
 
-Command:
+#### Command
+
+##### Direct json string with print output
 
 ```bash
-jesc '{"name":"John Doe","hobbies":"[{\"name\":\"climbing\",\"isFavorite\":true}]","esc":"{\"a\":3,\"b\":\"haha\",\"c\":\"{\\\"deep\\\":true}\"}"}' --format
+jesc '{"name":"John Doe","hobbies":"[{\"name\":\"climbing\",\"isFavorite\":true}]","esc":"{\"a\":3,\"b\":\"haha\",\"c\":\"{\\\"deep\\\":true}\"}"}' -f
 ```
 
-Output:
+##### Json file with print output
+
+```bash
+jesc --input input.json -f
+```
+
+##### Json file with file output
+
+```bash
+jesc --input input.json --output output.json -f
+```
+
+#### Output
 
 ```json
 {
@@ -71,7 +94,6 @@ Output:
     }
   }
 }
-
 ```
 
 ## 🧠 How It Works
@@ -93,14 +115,6 @@ cd jesc
 go build
 ```
 
-## 🐞 Debugging Mode
-
-```go
-const debug = true
-```
-
-This enables sample input and prints every nested key/value pair as it recursively parses the structure.
-
-📄 License
+## 📄 License
 
 The project is licensed under the [MIT License](https://github.com/fardhanardhi/jesc/blob/main/LICENSE).
